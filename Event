@@ -1,2 +1,0 @@
-class Event:
-   def __init__(self, time=0, next=0):
