@@ -1,21 +1,15 @@
-def get_turnaround():
+# Calculate Results
+
+def get_turnaround(log):
    return 1
 
 def get_throughput(log):
    return 1
 
 def get_queue_avg(log):
-   # parse log
-
-   # calculate average
-
-   # return result
-   return 1
+   avg_customers_in_system = 10
+   return avg_customers_in_system - (log[0] / log[1])
 
 def get_cpu_util(log):
-   # parse log input
-
-   # calculate cpu util
-
-   # return
-   return 1
+   # util = arrival_rate / service_rate
+   return log[0] / log[1]

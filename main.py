@@ -1,19 +1,22 @@
-from calcCpuUtil import calc_cpu_util
-from calcQueueAverage import calc_queue_avg
-from calcThroughput import calc_throughput
-from calcTurnaround import calc_turnaround
-import generateProcesses 
-import calculateProcesses
 from generateProcesses import generate_processes
-# can't test this yet - imports were written by VSCode... don't need all of them?
+from calculateProcesses import get_cpu_util, get_queue_avg, get_turnaround, get_throughput
+
 def main():
-   log = generate_processes()
 
-   cpu_util = calc_cpu_util(log)
-   queue_avg = calc_queue_avg(log)
-   turnaround = calc_turnaround(log)
-   throughput = calc_throughput(log)
+   # define constants
+   ARRIVAL_RATE = float(input("Enter an arrival rate: "))
+   AVERAGE_SERVICE_TIME = float(input("Enter an average service time: "))
 
+   # Run simulation - log[ARRIVAL_RATE, AVERAGE_SERVICE_TIME, CLOCK, BUSY_TIME]
+   log = generate_processes(ARRIVAL_RATE, AVERAGE_SERVICE_TIME)
+
+   # Calculate simulation results
+   cpu_util = get_cpu_util(log)
+   queue_avg = get_queue_avg(log)
+   turnaround = get_turnaround(log)
+   throughput = get_throughput(log)
+
+   # Output results
    output_results(cpu_util, queue_avg, turnaround, throughput)
 
 
@@ -26,3 +29,5 @@ def output_results(cpu_util, queue_avg, turnaround, throughput):
    print(f"Total Throughput: {throughput}")
    print("+-------------------------+")
    print("\nNow Exiting...")
+
+main()
