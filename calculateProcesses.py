@@ -1,12 +1,15 @@
 # Calculate Results
 
 def get_turnaround(log):
-   return 1
+   # turnaround = waiting time + service time
+   return log[2] + log[3]
 
 def get_throughput(log):
-   return 1
+   # throughput = work done per unit of time
+   return 10000 / log[2]
 
 def get_queue_avg(log):
+   # queue average is customers_in_system - utilization
    avg_customers_in_system = 10
    return avg_customers_in_system - (log[0] / log[1])
 

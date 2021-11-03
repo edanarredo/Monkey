@@ -23,7 +23,14 @@ class Event:
 class EventQueue:
    def __init__(self):
       self.head = None
-   
+
+   def get_head(self):
+      return self.head
+
+   def set_head(self, new_event):
+      self.head = new_event
+
+   # Insert into spot basedo on time (FCFS)
    def add_event(self, new_event):
       current = self.head
 
@@ -41,6 +48,7 @@ class EventQueue:
       current.next = new_event
       return
    
+   # Remove event with highest priority (head, smallest time)
    def remove_event(self):
       if self.head.next is not None:
          to_remove = self.head
@@ -50,10 +58,3 @@ class EventQueue:
          to_remove = self.head
          self.head = None
          del to_remove
-
-   
-   def get_head(self):
-      return self.head
-
-   def set_head(self, new_event):
-      self.head = new_event
